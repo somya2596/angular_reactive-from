@@ -6,9 +6,13 @@
 
     <div class="form-group">
       <label>Username</label>
-      <input [class.is-invalid]="registrationForm.get('userName').invalid && ('userName').touched" formControlName="userName" type="text" class="form-control">
-      <small [class.d-name]="registrationForm.get('userName').valid||registrationForm.get('userName')" class="text-danger">Username is required</small>
-    
+      <input [class.is-invalid]="userName.invalid && userName.touched"
+        formControlName="userName" type="text" class="form-control">
+      <!----small  [class.d-name]="registrationForm.get('userName').valid||registrationForm.get('userName').untouched" reuired class="text-danger">Username is required and must be atleast 3 charcters </small>-->
+      <div *ngIf="userName.invalid  && userName.touched ">
+        <small *ngIf="userName.errors?.required" class="text-danger">Username is required</small>
+        <small *ngIf="userName.errors?.minlength" class="text-danger">Username must be of atleast 3 characters</small>
+        </div>
     </div>
 
     <div class="form-group">
@@ -22,23 +26,22 @@
     </div>
 
     <div formGroupName="address">
-   <div class="form-group">
-      <label>City</label>
-      <input formControlName="city" type="text" class="form-control">
-    </div>
+      <div class="form-group">
+        <label>City</label>
+        <input formControlName="city" type="text" class="form-control">
+      </div>
 
-    <div class="form-group">
-      <label>State</label>
-      <input formControlName="state" type="text" class="form-control">
-    </div>
+      <div class="form-group">
+        <label>State</label>
+        <input formControlName="state" type="text" class="form-control">
+      </div>
 
-    <div class="form-group">
-      <label>postal code</label>
-      <input formControlName="postalCode" type="text" class="form-control">
+      <div class="form-group">
+        <label>postal code</label>
+        <input formControlName="postalCode" type="text" class="form-control">
+      </div>
     </div>
-</div>
     <button class="btn-btn-primary" type="submit">Register</button>
-    <button (click)="loadApiData()" class="btn-btn-secpndary ml-2" type="button">LoadApiData</button> 
+    <button (click)="loadApiData()" class="btn-btn-secpndary ml-2" type="button">LoadApiData</button>
   </form>
-
 </div>
