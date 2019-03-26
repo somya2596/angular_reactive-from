@@ -12,6 +12,7 @@
       <div *ngIf="userName.invalid  && userName.touched ">
         <small *ngIf="userName.errors?.required" class="text-danger">Username is required</small>
         <small *ngIf="userName.errors?.minlength" class="text-danger">Username must be of atleast 3 characters</small>
+        <small *ngIf="userName.errors?.forbiddenName" class="text-danger">{{userName.errors?.forbiddenName.value}} Username not allowed</small>
         </div>
     </div>
 
@@ -42,6 +43,6 @@
       </div>
     </div>
     <button class="btn-btn-primary" type="submit">Register</button>
-    <button (click)="loadApiData()" class="btn-btn-secpndary ml-2" type="button">LoadApiData</button>
+    <button (click)="loadApiData()" class="btn-btn-secondary ml-2" type="button">LoadApiData</button>
   </form>
 </div>
